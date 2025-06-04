@@ -14,11 +14,18 @@ export const decryptText = (encryptedText: string, key: string) => {
 };
 
 export const generateDailyPassword = () => {
-  const days = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
+  const days = [
+    'domingo',
+    'lunes',
+    'martes',
+    'miercoles',
+    'jueves',
+    'viernes',
+    'sabado',
+  ];
   const date = new Date();
-  const day = days[date.getDay()];
-  const dayOfMonth = date.getDate();
-  const year = date.getFullYear();
-  
+  const day = days[date.getUTCDay()]; // Usar UTC para el día de la semana
+  const dayOfMonth = date.getUTCDate(); // Usar UTC para el día del mes
+  const year = date.getUTCFullYear(); // Usar UTC para el año
   return `${day}${dayOfMonth}${year}`;
 };
